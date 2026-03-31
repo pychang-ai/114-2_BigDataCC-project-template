@@ -216,15 +216,17 @@ my-topics/
 │   ├── report.md          ← 期末報告
 │   └── slides/            ← 投影片
 │
-├── .gitignore             ← Git 忽略規則
-└── requirements.txt       ← Python 套件需求
+├── .gitignore                  ← Git 忽略規則
+├── requirements.txt            ← Python 套件需求
+├── collaboration-guide.md      ← 小組 Git 協作教學指南
+└── collaboration-exercise.md   ← 小組協作練習（課堂實作）
 ```
 
 ## 各資料夾使用說明
 
 ### proposal/
 
-第 11 週前繳交專題提案，`proposal.md` 需包含：
+W5 繳交專題提案，`proposal.md` 需包含：
 - 專題名稱與動機
 - 使用的資料集來源
 - 預計使用的技術
