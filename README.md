@@ -33,29 +33,50 @@
 - 使用 MySQL 資料庫儲存與查詢資料
 - 使用 Apache + PHP 建立 Web 前端
 
-## 專題時程
+## 專題時程與 Repo 內容檢查點
 
-| 週次 | 階段 | 繳交項目 |
-|------|------|---------|
-| 第 5 週 | 題目探索 | 公布專題題目參考清單，每人開始蒐集有興趣的題目 |
-| 第 6 週 | 個人選題 | 每人在自己的 Fork 中建立 `my-topics/` 資料夾，提出 1-3 個題目構想 |
-| 第 7 週 | 分組 | 公布分組名單，各組成員互相了解彼此的題目構想 |
-| 第 8 週 | 組內討論 | 各組從所有成員的題目中討論、投票，選出一個小組題目 |
-| 第 10 週 | 正式提案 | 組長建立專題 Repo，繳交 proposal/proposal.md |
-| 第 11 週 | 提案審查 | 教師審查提案，提供修改建議 |
-| 第 12-13 週 | 資料收集與分析 | 更新 src/ 和 data/ |
-| 第 14-15 週 | 系統開發 | 更新 src/ 和 docker/ |
-| 第 16 週 | 整合測試 | 確保 Docker 部署正常 |
-| 第 17 週 | 成果展示準備 | 繳交 docs/report.md 和投影片 |
-| 第 18 週 | 期末發表 | 口頭報告 + Demo |
+每週結束時，教師會檢查各組 Repo 是否包含該週應有的內容。
+
+| 週次 | 階段 | Repo 應出現的內容 |
+|------|------|------------------|
+| W3 | 分組與建立 Repo | `README.md` 填寫組別、組長、組員資訊 |
+| W4 | 個人題目探索 | `my-topics/` 每人 1-3 個 `.md` 檔（用 topic_template.md 格式） |
+| W5 | 決定題目與提案 | `proposal/proposal.md` 完成填寫（動機+資料+技術+分工+時程） |
+| W6 | 教師審查提案 | 教師在 Repo 開 Issue 回饋修改建議 |
+| W7 | 確定題目 | `proposal/proposal.md` 依回饋修正完成；`data/README.md` 確認資料來源與欄位定義 |
+| W8 | 前期研究 | `data/raw/` 放入原始資料（或 README 附下載連結）；`notebooks/` 初步資料探索筆記 |
+| W9 | 期中考 | （暫停，不檢查） |
+| W10 | 資料分析啟動 | `src/analysis/` 資料清洗程式；`data/processed/` 清洗後資料 |
+| W11 | 資料清洗與轉換 | `src/analysis/` 完整分析程式碼；`notebooks/` 分析筆記含視覺化圖表 |
+| W12 | 視覺化完成 | `notebooks/` 完整分析筆記含所有圖表；視覺化結果可重現 |
+| W13 | Docker 初版 | `docker/Dockerfile` 初版；容器可以 build 成功 |
+| W14 | Docker 完成 + 應用 | `docker/Dockerfile` 定版；`src/app/` 應用程式（Gradio 或 Flask）；`docker-compose.yml`（如需多容器） |
+| W15 | 整合測試 | 全系統 Docker 部署可正常啟動；`requirements.txt` 完整 |
+| W16 | 最終整合 | `src/model/`（如有 ML）；Docker 部署最終確認；所有程式碼有註解 |
+| W17 | 繳交報告 | `docs/report.md` 完成（十章結構）；`docs/slides/` 投影片上傳 |
+| W18 | 期末發表 | 口頭報告 + 實機 Demo |
+
+### Repo 內容累積示意
+
+```
+W3  README.md ✓
+W4  README.md ✓  my-topics/ ✓
+W5  README.md ✓  my-topics/ ✓  proposal/ ✓
+W7  README.md ✓  my-topics/ ✓  proposal/ ✓（修正版）  data/README.md ✓
+W8  README.md ✓  my-topics/ ✓  proposal/ ✓  data/raw/ ✓  notebooks/ ✓
+W10 ..............................  data/processed/ ✓  src/analysis/ ✓
+W13 ..............................  docker/Dockerfile ✓
+W14 ..............................  src/app/ ✓
+W17 ..............................  docs/report.md ✓  docs/slides/ ✓
+```
 
 ## 選題流程說明
 
 專題題目的產生分為四個階段，從個人發想到小組共識：
 
-### 第一階段：個人題目探索（第 5-6 週）
+### 第一階段：個人題目探索（W4）
 
-每位同學在自己 Fork 的 Repo 中建立 `my-topics/` 資料夾，提出 1-3 個有興趣的題目。每個題目建立一個 markdown 檔案，格式如下：
+每位同學在專題 Repo 中建立 `my-topics/` 資料夾，提出 1-3 個有興趣的題目。每個題目建立一個 markdown 檔案，格式如下：
 
 ```
 my-topics/
@@ -86,23 +107,25 @@ my-topics/
 - 能運用課程所學的技術
 - 有明確的分析目標或應用場景
 
-### 第二階段：分組（第 7 週）
-
-教師公布分組名單，每組 4-5 人。
-
-### 第三階段：組內討論與投票（第 8 週）
+### 第二階段：組內討論與投票（W5）
 
 1. 各組成員分享自己提出的 1-3 個題目構想
 2. 組內討論每個題目的可行性、有趣程度、技術難度
 3. 透過投票或共識決定一個小組題目
 4. 可以選擇某位成員的題目，也可以組合多個題目的元素
+5. 組長繳交正式的 `proposal/proposal.md`
 
-### 第四階段：正式提案（第 10 週）
+### 第三階段：教師審查與修正（W6–W7）
 
-由組長或組內討論後的代表：
-1. 用模板建立專題 Repo（如 `114-2_BigDataCC-G01`）
-2. 邀請組員、老師、助教為 Collaborator
-3. 繳交正式的 `proposal/proposal.md`
+1. W6：教師審查提案，在 Repo 開 Issue 提供回饋
+2. W7：各組依回饋修正 `proposal/proposal.md`，確定最終題目
+3. W7：確認資料來源可取得，填寫 `data/README.md`
+
+### 第四階段：前期研究（W8）
+
+1. 開始收集原始資料，放入 `data/raw/`
+2. 建立 Jupyter Notebook，進行初步資料探索
+3. 確認資料品質與可用性
 
 ## 評分標準
 
